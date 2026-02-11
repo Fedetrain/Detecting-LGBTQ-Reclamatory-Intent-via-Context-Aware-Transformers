@@ -17,29 +17,31 @@
 
 ## 📌 Overview
 
-[cite_start]Language within the LGBTQ+ context is characterized by complex phenomena such as **reclamation**, whereby terms originally intended as slurs are repurposed by community members for positive identity-affirming purposes[cite: 12].
+Language within the LGBTQ+ context is characterized by complex phenomena such as **reclamation**, whereby terms originally intended as slurs are repurposed by community members for positive identity-affirming purposes.
 
-[cite_start]This project implements a **Context-Aware Transformer Architecture** to address the **MultiPRIDE 2026** challenge[cite: 1, 5, 6]. [cite_start]The goal is to distinguish between the denigratory usage of slurs (Hate Speech) and their reclaimed usage, operating in a multilingual setting (🇮🇹 Italian, 🇬🇧 English, 🇪🇸 Spanish)[cite: 6, 8, 15].
+This project implements a **Context-Aware Transformer Architecture** to address the **MultiPRIDE 2026** challenge. The goal is to distinguish between the denigratory usage of slurs (Hate Speech) and their reclaimed usage, operating in a multilingual setting (🇮🇹 Italian, 🇬🇧 English, 🇪🇸 Spanish).
 
-[cite_start]We tackle two specific tasks[cite: 6, 16]:
-* [cite_start]**Task A (Text-Only):** Classification based solely on the tweet text[cite: 6, 79].
-* [cite_start]**Task B (Context-Aware):** Classification enriched by the **User Biography**, which provides crucial pragmatic signals about the author's identity[cite: 6, 80].
+We tackle two specific tasks:
+* **Task A (Text-Only):** Classification based solely on the tweet text.
+* **Task B (Context-Aware):** Classification enriched by the **User Biography**, which provides crucial pragmatic signals about the author's identity.
 
 ---
 
 ## 🧠 Methodology & Architecture
 
-[cite_start]Our system leverages fine-tuned Encoder-only Language Models (LMs) enhanced by a custom neural head and advanced data augmentation strategies[cite: 6, 7].
+Our system leverages fine-tuned Encoder-only Language Models (LMs) enhanced by a custom neural head and advanced data augmentation strategies.
 
 ### 1. Data Augmentation (Back-Translation)
-[cite_start]To address class imbalance and data scarcity, we implemented a Back-Translation pipeline (Source $\rightarrow$ Pivot $\rightarrow$ Source) using **MarianMT**[cite: 86, 87].
-* [cite_start]**Pivot Languages:** English (for IT/ES) and Spanish (for EN)[cite: 89].
-* [cite_start]**Strategies**[cite: 90, 91, 93]:
+To address class imbalance and data scarcity, we implemented a Back-Translation pipeline (Source $\rightarrow$ Pivot $\rightarrow$ Source) using **MarianMT**.
+* **Pivot Languages:** English (for IT/ES) and Spanish (for EN).
+* **Strategies**:
     * *Full Augmentation:* Doubles the dataset size to increase linguistic variability.
     * *Balanced Augmentation:* Augments only the minority class (positive/reclaimed) to fix imbalance.
 
 ### 2. Context-Aware Architecture
-[cite_start]The model processes input as `[CLS] TWEET [SEP] CONTEXT: BIO [SEP]`[cite: 81, 82]. [cite_start]We employ a **Hybrid Pooling Strategy** to maximize feature extraction[cite: 140, 143]:
+The model processes input as `[CLS] TWEET [SEP] CONTEXT: BIO [SEP]`. We employ a **Hybrid Pooling Strategy** to maximize feature extraction:
+
+![capture_20260211150427682](https://github.com/user-attachments/assets/35ccf2a6-cf67-46c5-b6c7-eccd9d54fffc)
 
 ```mermaid
 graph TD
