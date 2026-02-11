@@ -11,7 +11,7 @@
 ![Task](https://img.shields.io/badge/Task-EVALITA%202026-red)
 
 > **Official Repository for the "GRUPPETTOZZO" system at EVALITA 2026 MultiPRIDE Challenge.**
-> *Authors: Federico Traina, Alessandro Santoro, Gabriele Greco, Irene Siragusa, Roberto Pirrone.*
+> *Authors: Federico Traina, Alessandro Santoro, Gabriele Greco.*
 > *University of Palermo, Department of Engineering.*
 
 ### 📄 [Read the Full Report (PDF)](./EVALITA_2026_gruppettozzo.pdf)
